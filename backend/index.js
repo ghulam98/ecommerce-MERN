@@ -3,7 +3,9 @@ const dotenv  = require("dotenv")
 const DB = require('./DB')
 var cors = require('cors')
 
+
 app.use(cors())
+
 //Config
 dotenv.config({path:"./config/config.env"})
 
