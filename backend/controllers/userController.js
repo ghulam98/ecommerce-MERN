@@ -161,8 +161,11 @@ exports.updatePassword = async(req, res, next)=>{
 }
 
 
-//Update Profile
+//Update Profile--ADMIN
 exports.updateProfile = async(req, res, next)=>{
+    try {
+        
+
     //need to update bcose it will considering all attribute update only name email will change
     const newUserData = {
         name:req.body.name,
@@ -171,5 +174,69 @@ exports.updateProfile = async(req, res, next)=>{
     //TODO: Avatar link do when cloudnary deal
     const user = await User.findByIdAndUpdate(req.user.id, newUserData, {new:true, runValidators: true, useFindAndModify: false})
     res.status(200).json({success:true, user})
+} catch (error) {
+    res.status(500).json({success:true, message:error.message})
+        
+}
 }
 
+//get all Users
+exports.getAllUser = async(req,res,next)=>{
+    try {
+        const users = await User.find()
+        res.status(200).json({success:true, users})
+    } catch (error) {
+        res.status(500).json({success:false,message:error.message})
+    }
+}
+
+
+//get user detail by admin---ADMIN
+exports.getSingleUserDetail = async(req, res)=>{
+    try {
+        const user = await User.findById(req.params.id)
+        if(!user){
+            return res.status(201).json({success:false, message:`User with id ${req.params.id} is not exist.`})
+        }
+        res.status(200).json({success:true, user})
+    } catch (error) {
+        res.status(500).json({success:false,message:error.message})
+    }
+}
+
+
+//Update other users role
+exports.updateUserRole = async(req, res, next)=>{
+    try {
+        
+
+    //need to update bcose it will considering all attribute update only name email will change
+    const newUserData = {
+        name:req.body.name,
+        email:req.body.email,
+        role:req.body.role
+    }
+    
+    const user = await User.findByIdAndUpdate(req.params.id, newUserData, {new:true, runValidators: true, useFindAndModify: false})
+    res.status(200).json({success:true, user})
+} catch (error) {
+    res.status(500).json({success:true, message:error.message})
+        
+}
+}
+
+//delete user profile--ADMIN
+exports.deleteUserAccount = async(req, res)=>{
+    //TODO: will remove data from Cloudnary also
+    try {
+        const user = await User.findById(req.params.id)
+        if(!user){
+          return  res.status(201).json({success:true, message:`User with id ${req.params.id} is not exist`})
+        } 
+        await User.findByIdAndDelete(req.params.id)
+        res.status(200).json({success:true, message:"User deleted successfully."})
+
+    } catch (error) {
+        res.status(500).json({success:true, message:error.message})
+    }
+}
