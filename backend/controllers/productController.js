@@ -149,30 +149,51 @@ exports.createProductReview = async (req, res)=>{
 }
 
 
-// //Get all reviews of a product
-// exports.getProductReviews = async (req, res)=>{
-//     try {
-//         const product = await Product.findById(req.query.id)
-//         if(!product){
-//             return res.status(404).json({success:false,message:"Not found"})
-//         }
-//         res.status(200).json({success:true, reviews:product.reviews})
-//     } catch (error) {
-//         res.status(500).json({success:false,message:error.message})
-//     }
-// }
+//Get all reviews of a product
+exports.getProductReviews = async (req, res)=>{
+    try {
+        const product = await Product.findById(req.query.productId)
+        if(!product){
+            return res.status(404).json({success:false,message:"Prodect not found"})
+        }
+        res.status(200).json({success:true, reviews:product.reviews})
+    } catch (error) {
+        res.status(500).json({success:false,message:error.message})
+    }
+}
 
-// //Delete reviews of a product
-// exports.deleteProductReviews = async (req, res)=>{
-//     try {
-//         const product = await Product.findById(req.query.id)
-//         if(!product){
-//             return res.status(404).json({success:false,message:"Not found"})
-//         }
-//         res.status(200).json({success:true, reviews:product.reviews})
-//     } catch (error) {
-//         res.status(500).json({success:false,message:error.message})
-//     }
-// }
+//Delete reviews of a product
+exports.deleteProductReviews = async (req, res)=>{
+    try {
+        const product = await Product.findById(req.query.productId)
+        if(!product){
+            return res.status(404).json({success:false,message:"Not found"})
+        }
+        //now remove comment after match with comment_id from query string
+        const idx = product.reviews.findIndex(ele=>ele._id.toString()===req.query.id)
+        if(idx < 0){
+            return res.status(201).json({success:false,message:`Comment with id ${req.query.id} is not exist`})
+        }
+        const deleteCommentDetail = product.reviews[idx]
+        console.log("before",product.reviews)
+        product.reviews.splice(idx,1)
+        console.log("After",product.reviews)
+
+
+
+        product.numberOfReviews -=1
+        let avg = 0;
+
+        product.reviews.forEach((rev) => {
+          avg += rev.rating;
+        });
+      
+        product.ratings = avg / product.reviews.length;
+        product.save()
+        res.status(200).json({success:true, message:`Review with id ${req.query.id} deleted successfully`})
+    } catch (error) {
+        res.status(500).json({success:false,message:error.message})
+    }
+}
 
 

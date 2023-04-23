@@ -1,0 +1,790 @@
+{
+	"info": {
+		"_postman_id": "cc12dcb5-dd19-491c-9422-0d169f4961ee",
+		"name": "Ecommerce",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Product",
+			"item": [
+				{
+					"name": "Add product--Admin",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"Product-3\",\r\n    \"price\":20000,\r\n    \"description\":\"Nioce product believe me sir\",\r\n    \"category\":\"Laptop\",\r\n    \"images\":{\r\n        \"public_id\":\"sma=le image\",\r\n        \"url\":\"smaple.com/image1\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/admin/product/new",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"product",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Product",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"New Productt2\",\r\n    \"price\":1000,\r\n    \"description\":\"Nioce product believe me sir\",\r\n    \"category\":\"Mobile\",\r\n    \"images\":{\r\n        \"public_id\":\"sma=le image\",\r\n        \"url\":\"smaple.com/image1\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/products?page=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"products"
+							],
+							"query": [
+								{
+									"key": "keyword",
+									"value": "Ghulam",
+									"disabled": true
+								},
+								{
+									"key": "page",
+									"value": "2"
+								},
+								{
+									"key": "category",
+									"value": "Mobile",
+									"disabled": true
+								},
+								{
+									"key": "price[gtew]",
+									"value": "1000",
+									"disabled": true
+								},
+								{
+									"key": "price[lte]",
+									"value": "20001",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update product--Admin",
+					"protocolProfileBehavior": {
+						"disabledSystemHeaders": {
+							"content-type": true
+						}
+					},
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"type": "default"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"New UPDq\",\r\n    \"price\":1000,\r\n    \"description\":\"Nioce product believe me sir\",\r\n    \"category\":\"Mobile\",\r\n    \"images\":{\r\n        \"public_id\":\"sma=le image\",\r\n        \"url\":\"smaple.com/image1\"\r\n    }\r\n}"
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/admin/product/6417174703421d738538372c",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"product",
+								"6417174703421d738538372c"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Product --Admin",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/admin/product/642c1824fba485801093b5cb",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"product",
+								"642c1824fba485801093b5cb"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add Product review",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"productId\":\"643acdc14526cac8a610afda\",\r\n    \"comment\":\"4 rating dunga sale ko\",\r\n    \"rating\":4\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/review",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"review"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Product detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/product/643abf8caf685edd7c5a223d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"product",
+								"643abf8caf685edd7c5a223d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get all reviews",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/reviews?productId=643acdc14526cac8a610afda",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "productId",
+									"value": "643acdc14526cac8a610afda"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete reviews",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/reviews?id=643acdec4526cac8a610afe7&productId=643acdc14526cac8a610afda",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"reviews"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "643acdec4526cac8a610afe7"
+								},
+								{
+									"key": "productId",
+									"value": "643acdc14526cac8a610afda"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "User",
+			"item": [
+				{
+					"name": "Register user",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"ghulam\",\r\n    \"email\":\"g@gmail.com\",\r\n    \"password\":\"11111111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/register",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"register"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Login",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n    \"email\":\"g@gmail.com\",\r\n    \"password\":\"11111111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/login",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"login"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Logout",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/logout",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"logout"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Forgot password",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"subahani98@gmail.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/password/forgot",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"password",
+								"forgot"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "reset password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"password\":111111111,\r\n    \"confirmPassword\":111111111\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/password/reset/10472628cc8a75644db4b7039d23f78bfba8bc9d",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"password",
+								"reset",
+								"10472628cc8a75644db4b7039d23f78bfba8bc9d"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get User detail",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update password",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\":\"11111111\",\r\n    \"newPassword\":\"111111111\",\r\n    \"confirmPassword\":\"111111111\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/update/password",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"update",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update profile",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\":\"kallllqqllmnn1\",\r\n    \"email\":\"kmohd7121@gmail.com\",\r\n    \"role\":\"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/update/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"update",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get All Users---ADMIN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/admin/users",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"users"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Detail single user---ADMIN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/admin/user/642311242b90f62cb3e022cd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"user",
+								"642311242b90f62cb3e022cd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update roles---ADMIN",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\":\"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/admin/user/642311242b90f62cb3e022cd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"user",
+								"642311242b90f62cb3e022cd"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete account---ADMIN",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\":\"admin\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/admin/user/642311242b90f62cb3e022cd",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"user",
+								"642311242b90f62cb3e022cd"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Order",
+			"item": [
+				{
+					"name": "newOrder",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"itemsPrice\":20000,\r\n    \"taxPrice\":36,\r\n    \"totalPrice\":336,\r\n    \"orderItems\":[\r\n        {\r\n            \"product\":\"643acdc14526cac8a610afda\",\r\n            \"name\":\"product-22\",\r\n            \"price\":1200,\r\n            \"image\":\".snksnsURL\",\r\n            \"quantity\":1\r\n        }\r\n    ],\r\n    \"shippingInfo\":{\r\n        \"address\":\"1881 los angles\",\r\n        \"city\":\"New Delhi\",\r\n        \"state\":\"Delhi\",\r\n        \"country\":\"india\",\r\n        \"pinCode\":110096,\r\n        \"phoneNo\":1234567890\r\n    },\r\n    \"paymentInfo\":{\r\n        \"id\":\"sample paymentinfo\",\r\n        \"status\":\"succeeded\"\r\n    }\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/order/new",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"new"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "my orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/orders/me",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"orders",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "see  single order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/order/6440e85687e25cfd22ebddf2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"order",
+								"6440e85687e25cfd22ebddf2"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all order--ADMIN",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:4000/api/v1/admin/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update order--ADMIN",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"Delivered\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/admin/order/644556582d5349d2dd6019b5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order",
+								"644556582d5349d2dd6019b5"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete order--ADMIN",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\":\"Delivered\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:4000/api/v1/admin/order/644556582d5349d2dd6019b5",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "4000",
+							"path": [
+								"api",
+								"v1",
+								"admin",
+								"order",
+								"644556582d5349d2dd6019b5"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
